@@ -44,11 +44,11 @@ Página para visualizar y editar el perfil del usuario, ya sea alumno o profesor
 
 7. Pantalla de asistencia donde el profesor podrá pasar lista de asistencia por clase.
 
-![alt text](img13.png)
+![alt text](img14.png)
 
 8. Resumen de asistencia en la cual el profesor vera sus fichajes, notificaciones y tutorias asignadas.
 
-![alt text](img14.png)
+![alt text](img13.png)
 
 9. Menu del profesor.
 

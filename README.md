@@ -57,3 +57,4 @@ Página para visualizar y editar el perfil del usuario, ya sea alumno o profesor
 10. Pantalla de perfil del profesor.
 
 ![alt text](img16.png)
+

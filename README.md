@@ -13,15 +13,15 @@
 # Pruebas de consultas a la base de datos
 
 Tabla asistencia
-![alt text](cap1.png)
+![alt text](cap1.PNG)
 Tabla clase
-![alt text](cap2.png)
+![alt text](cap2.PNG)
 Tabla persona
-![alt text](cap3.png)
+![alt text](cap3.PNG)
 Consulta d'asistències amb join per rebre les dades de l'alumne o profesor i la data d'asistència
-![alt text](cap4.png)
+![alt text](cap4.PNG)
 Consulta a persona amb join per rebre les dades de les clases que està registrat
-![alt text](cap5.png)
+![alt text](cap5.PNG)
 
 # Crear wireframe d’alta qualitat (figma) i guia d’estils.
 

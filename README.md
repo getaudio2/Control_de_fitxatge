@@ -9,6 +9,7 @@
 # Diseño de la base de datos de control de presencia
 
 ![alt text](image-1.png)
+![atl text](Captura de pantalla 2024-11-15 155417.png)
 
 # Pruebas de consultas a la base de datos
 

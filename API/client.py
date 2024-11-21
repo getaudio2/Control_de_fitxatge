@@ -6,7 +6,7 @@ def get_db_connection():
         host="127.0.0.1",
         user="root",
         password="1234",
-        database="Alumnat",
+        database="control_de_fichaje",
         charset='utf8mb4',
         collation='utf8mb4_general_ci'
     )

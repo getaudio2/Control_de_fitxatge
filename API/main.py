@@ -2,9 +2,9 @@ from fastapi import FastAPI, HTTPException, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Optional
 from client import get_db_connection
-from API.persona import Persona
-from API.clase import Clase
-from API.asistencia import Asistencia
+from persona import Persona
+from clase import Clase
+from asistencia import Asistencia
 import csv
 from io import StringIO
 
@@ -42,21 +42,11 @@ def clase_schema(fetchClase):
 
 
 @app.get("/persona/list")
-def list_alumnes():
+def list_personas():
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
     cursor.execute("SELECT * FROM persona")
-    alumnes = cursor.fetchall()
+    personas = cursor.fetchall()
     conn.close()
-    return alumnes
+    return personas
 
-@app.get("/alumne/show/{id}")
-def show_alumne(id: int):
-    conn = get_db_connection()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM Alumne WHERE IdAlumne = %s", (id,))
-    alumne = cursor.fetchone()
-    conn.close()
-    if alumne:
-        return alumne
-    raise HTTPException(status_code=404, detail="No se encontro al alumno")

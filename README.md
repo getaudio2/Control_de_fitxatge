@@ -2,11 +2,18 @@
 
 # Consulta lista de personas
 
-Mediante una consulta basica
+Mediante una consulta basica, podemos obtener la lista total de personas (alumnos, profesores) que manejamos en nuestra base de datos.
 ````
 SELECT * FROM persona
 ````
 
-podemos obtener la lista total de personas (alumnos, profesores que manejamos en nuestra base de datos)
-
 ![alt text](image.png)
+
+````
+SELECT * FROM persona where rol = "profesor";
+````
+
+
+# Consulta Asistencia
+
+![alt text](image-1.png)

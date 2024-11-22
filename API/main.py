@@ -72,6 +72,15 @@ def list_personas():
     conn.close()
     return personas
 
+@app.get("/persona/profesorAll")
+def list_personas():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM persona where rol = 'Profesor'")
+    personas = cursor.fetchall()
+    conn.close()
+    return personas
+
 @app.get("/asistencia/listAll")
 def list_asiste():
     conn = get_db_connection()

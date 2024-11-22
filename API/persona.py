@@ -1,10 +1,10 @@
 from pydantic import BaseModel
 from typing import Optional
 
-# Pydantic Model for Alumne
+# Pydantic Model for Persona
 class Persona(BaseModel):
     name: str
     email: str
-    Clase_id: int
-    Rol: str
+    grado_id: int
+    rol: str
     username: str

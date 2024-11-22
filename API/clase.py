@@ -5,9 +5,7 @@ from typing import Optional
 class Clase(BaseModel):
     Modulo: str
     Nombre: str
-    Grado: str
-    Curso: int
-    Grupo: str
-    Franja: int
+    grado_id: int
+    franja_id: int
     Aula: str
     Dia: str

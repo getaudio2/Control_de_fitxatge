@@ -12,7 +12,7 @@ SELECT * FROM persona
 ````
 SELECT * FROM persona where rol = "profesor";
 ````
-
+![alt text](image-2.png)
 
 # Consulta Asistencia
 

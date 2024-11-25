@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Cridem a l'endpoint de l'API fent un fetch
-    fetch("http://localhost:8000/alumne/listAll")  // Aquí cridem a l'endpoint de l'API
+    fetch("http://localhost:8000/persona/alumnosAll")  // Aquí cridem a l'endpoint de l'API
         .then(response => {
             if (!response.ok) {
                 throw new Error("Error a la resposta del servidor");
@@ -14,9 +14,8 @@ document.addEventListener("DOMContentLoaded", function() {
             // Iterar sobre els alumnes i afegir-los al DOM
             data.forEach(alumne => {
                 const row = document.createElement("tr");
-
                 const nomAluCell = document.createElement("td");
-                nomAluCell.textContent = alumne.NomAlumne;
+                nomAluCell.textContent = alumne.Name;
                 row.appendChild(nomAluCell);
 
                 const cicleCell = document.createElement("td");

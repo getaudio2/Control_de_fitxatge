@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #EBF3FF;
+    margin: 0;
+    padding: 0;
+}
+.navbar_container {
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+}
+.logo_section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+.logo_name {
+    font-weight: 600;
+    font-size: 32px;
+    color: #143751;
+}
+
+.school_name {
+    font-weight: 300;
+    font-size: 30px;
+    color: #31A9CF;
+}
+
+.main_area {
+    display: flex;
+    justify-content: space-between;
+    height: 90vh;
+}
+
+.menu_gestion_container {
+    background-color: #143751;
+}
+
+.apartado_menu {
+    font-size: 18px;
+    font-weight: normal;
+    color: #B7ECFD;
+    padding: 10px 8px;
+}
+
+.dashboard_container {
+    background-color: #FFFFFF;
+    margin-top: 10px;
+}
+
+.titulo {
+    padding-right: 900px;
+}

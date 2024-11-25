@@ -29,6 +29,9 @@ def persona_schema(fetchPersona):
         "rol": fetchPersona[3],
         "username": fetchPersona[4]
     }
+
+def personas_schema(personas) -> dict:
+    return [persona_schema(persona) for persona in personas]
     
 def clase_schema(fetchClase):
     return {
@@ -81,12 +84,13 @@ def list_personas():
     conn.close()
     return personas
 
-@app.get("/persona/alumnosAll")
+@app.get("/persona/alumnosAll", response_model=list[dict])
 def list_personas():
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
     cursor.execute("SELECT * FROM persona where rol = 'Alumno'")
     personas = cursor.fetchall()
+    #personas = personas_schema(personas)
     conn.close()
     return personas
 

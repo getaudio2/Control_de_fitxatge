@@ -27,10 +27,25 @@ body {
     color: #31A9CF;
 }
 
-.main_area {
+.user {
     display: flex;
     justify-content: space-between;
-    height: 90vh;
+    align-items: center;
+    gap: 10px;
+    padding-left: 10px;
+}
+
+.fa-user {
+    color: #31A9CF;
+    resize: both;
+    width: 20px;
+    height: 20px;
+}
+
+.main_area {
+    display: flex;
+    width: auto;
+    min-height: 100vh;
 }
 
 .menu_gestion_container {
@@ -38,17 +53,69 @@ body {
 }
 
 .apartado_menu {
-    font-size: 18px;
-    font-weight: normal;
+    display: flex;
+    justify-content: start;
+    gap: 15px;
+    width: 12vw;
     color: #B7ECFD;
-    padding: 10px 8px;
+    padding-left: 10px;
+}
+
+.apartado_menu > i {
+    display: flex;
+    align-items: center;
+    resize: both;
+    width: 10px
+}
+
+.apartado_menu > p {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.apartado_menu:hover {
+    background-color: rgba(255, 255, 255, .2);
+    color: #FFFFFF;
+    cursor: pointer;
 }
 
 .dashboard_container {
     background-color: #FFFFFF;
+    width: 100%;
     margin-top: 10px;
+    padding-top: 10px;
+    padding-left: 50px;
 }
 
 .titulo {
-    padding-right: 900px;
+    color: #143751;
+    font-size: 23px;
+    font-weight: normal;
+    line-height: 120%;
+}
+
+.filter_labels {
+    font-weight: bold;
+    color: #143751;
+    display: flex;
+    justify-content: start;
+    gap: 200px;
+}
+
+.filter_drop {
+    display: flex;
+    justify-content: start;
+    gap: 140px;
+}
+
+.filter_drop select {
+    appearance: none;
+    border: 0;
+    border-radius: 0;
+    color: #7F7F7F;
+    border: 1.5px solid rgba(213, 213, 213, 1);
+    border-radius: 6px;
+    padding: 6px 8px;
+    padding-right: 25px;
+    cursor: pointer;
 }

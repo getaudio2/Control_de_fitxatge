@@ -3,41 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asistencias</title>
+    <title>CRONOS - Asistencias</title>
     <link rel="stylesheet" href="../css/alumne_asistencia.css">
     <link rel="stylesheet" 
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-    <section class="navbar_container">
-        <div class="logo_section">
-            <img src="../assets/logoAppProject.png" alt="" height="50px" width="48px">
-            <label for="" class="logo_name">CRONOS</label>
-            <label for="" class="school_name">Instituto TIC</label>
+    <nav class="navbar">
+        <div class="navbar__logo-section">
+            <img class="navbar__img" src="../assets/logoAppProject.png" alt="" height="50px" width="48px">
+            <p class="navbar__logo">CRONOS</p>
+            <p class="navbar__school">Instituto TIC</p>
             <i class="fa-regular fa-envelope"></i>
             <i class="fa-regular fa-bell"></i>
         </div>
-        <div class="user">
+        <div class="navbar__user">
             <i class="fa-solid fa-user"></i>
-            <label for="" class="username">Paúl López</label>
+            <p class="username">Paúl López</p>
+            <i class="fa-solid fa-angle-down"></i>
         </div>
-    </section>
-    <div class="main_area">
-        <section class="menu_gestion_container">
-            <div class="apartado_menu"><i class="fa-regular fa-clock"></i><p>Asistencia</p></div>
-            <div class="apartado_menu"><i class="fa-solid fa-hourglass"></i><p>Presencia</p></div>
-            <div class="apartado_menu"><i class="fa-solid fa-user-check"></i><p>Seguimiento</p></div>
-            <div class="apartado_menu"><i class="fa-solid fa-bars"></i><p>Horario escolar</p></div>
-            <div class="apartado_menu"><i class="fa-regular fa-calendar"></i><p>Calendario</p></div>
-            <div class="apartado_menu"><i class="fa-solid fa-file-circle-plus"></i><p>Justificantes</p></div>
-        </section>
-        <section class="dashboard_container">
-            <h2 class="titulo">Resumen de asistencias</h2>
-            <div class="filter_labels">
-                <p class="fecha_label">Fecha</p>
-                <p class="asignatura_label">Asignatura</p>
+    </nav>
+    <div class="main-area">
+        <div class="sidebar">
+            <div class="item">
+                <i class="fa-regular fa-clock"></i>
+                <p>Asistencia</p>
             </div>
-            <div class="filter_drop">
+            <div class="item">
+                <i class="fa-solid fa-hourglass"></i>
+                <p>Presencia</p>
+            </div>
+            <div class="item">
+                <i class="fa-solid fa-user-check"></i>
+                <p>Seguimiento</p>
+            </div>
+            <div class="item">
+                <i class="fa-solid fa-bars"></i>
+                <p>Horario escolar</p>
+            </div>
+            <div class="item">
+                <i class="fa-regular fa-calendar"></i>
+                <p>Calendario</p>
+            </div>
+            <div class="item">
+                <i class="fa-solid fa-file-circle-plus"></i>
+                <p>Justificantes</p>
+            </div>
+        </div>
+        <div class="dashboard">
+            <h2 class="title">Resumen de asistencias</h2>
+            <div class="filter-title">
+                <p>Fecha</p>
+                <p>Asignatura</p>
+            </div>
+            <div class="filter-drop">
                 <select name="fechadrop" id="fechadrop">
                     <option value="ultimos7">Últimos 7 días</option>
                 </select>
@@ -45,7 +64,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
                     <option value="asignatura">Asignatura</option>
                 </select>
             </div>
-        </section>
+            <div class="asistencias-title">
+                <p>Asignatura</p>
+                <p>Fecha y hora</p>
+            </div>
+            <hr class="divider">
+            <div class="asistencias" id="asistencias"></div>
+        </div>
     </div>
+    <script src="../js/alumne_asistencia.js"></script>
 </body>
 </html>

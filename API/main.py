@@ -46,7 +46,7 @@ def clase_schema(fetchClase):
 def asistencia_schema(fetchAsistencia):
     return {
     "persona_id": fetchAsistencia[0],
-    "clase_id": fetchAsistencia[1],
+    "modulo": fetchAsistencia[1],
     "fecha": fetchAsistencia[2],
     "comentario": fetchAsistencia[3]
     }
@@ -98,7 +98,7 @@ def list_personas():
 def list_asiste():
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM asistencia")
+    cursor.execute("SELECT clase.Módulo, asistencia.Fecha, asistencia.Comentario FROM asistencia inner JOIN clase ON asistencia.id_clase = clase.id;")
     asistencias = cursor.fetchall()
     conn.close()    
     return asistencias

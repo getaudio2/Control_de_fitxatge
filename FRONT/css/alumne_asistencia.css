@@ -1,121 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #EBF3FF;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
+    background-color: #EBF3FF;
 }
-.navbar_container {
+
+.navbar {
     background-color: #FFFFFF;
     display: flex;
     justify-content: space-between;
+    height: 9.5vh;
 }
-.logo_section {
+
+.navbar__logo-section {
     display: flex;
     justify-content: space-around;
     align-items: center;
     gap: 20px;
 }
-.logo_name {
-    font-weight: 600;
-    font-size: 32px;
+
+.navbar__img {
+    width: 10%;
+    height: 60%;
+}
+
+.navbar__logo {
+    font-weight: 800;
+    font-size: 25px;
+    letter-spacing: -0.5px;
     color: #143751;
 }
 
-.school_name {
-    font-weight: 300;
-    font-size: 30px;
+.navbar__school {
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 22px;
     color: #31A9CF;
 }
 
-.user {
+.navbar__user {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    padding-left: 10px;
+    gap: 6px;
+    margin-right: 20px;
 }
 
 .fa-user {
     color: #31A9CF;
-    resize: both;
-    width: 20px;
-    height: 20px;
+    font-size: 24px;
+    margin-right: 10px;
 }
 
-.main_area {
+.fa-angle-down {
+    font-size: 16px;
+
+}
+
+.main-area {
     display: flex;
-    width: auto;
-    min-height: 100vh;
+    height: calc(100vh - 62px);
 }
 
-.menu_gestion_container {
+.sidebar {
     background-color: #143751;
+    flex: 1;
+    transition: all 0.3s ease;
 }
 
-.apartado_menu {
-    display: flex;
-    justify-content: start;
-    gap: 15px;
-    width: 12vw;
-    color: #B7ECFD;
-    padding-left: 10px;
+.dashboard {
+    background-color: #FFFFFF;
+    flex: 5;
+    margin: 15px;
+    padding: 10px 50px;
 }
 
-.apartado_menu > i {
+.sidebar .item {
     display: flex;
     align-items: center;
-    resize: both;
-    width: 10px
+    gap: 4px;
+    padding: 0px 13px;
+    color: #B7ECFD;
 }
 
-.apartado_menu > p {
+.sidebar .item i {
+    flex: 1;
+    font-size: 25px;
+    transition: all 0.3s ease;
+}
+
+.sidebar .item p {
+    flex: 3;
     font-size: 16px;
-    font-weight: normal;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
-.apartado_menu:hover {
+.sidebar .item:hover {
     background-color: rgba(255, 255, 255, .2);
     color: #FFFFFF;
     cursor: pointer;
 }
 
-.dashboard_container {
-    background-color: #FFFFFF;
-    width: 100%;
-    margin-top: 10px;
-    padding-top: 10px;
-    padding-left: 50px;
-}
-
-.titulo {
+.title {
     color: #143751;
     font-size: 23px;
     font-weight: normal;
     line-height: 120%;
 }
 
-.filter_labels {
+.filter-title, .asistencias-title {
     font-weight: bold;
     color: #143751;
     display: flex;
-    justify-content: start;
-    gap: 200px;
+    height: 7vh;
 }
 
-.filter_drop {
+.filter-title > p:first-child, 
+.asistencias-title > p:first-child {
+    flex: 1;
+}
+
+.filter-title > p:last-child, 
+.asistencias-title > p:last-child {
+    flex: 3;
+}
+
+.filter-drop {
     display: flex;
-    justify-content: start;
-    gap: 140px;
+    gap: 105px;
+    margin-bottom: 10px;
 }
 
-.filter_drop select {
+.filter-drop select {
     appearance: none;
-    border: 0;
-    border-radius: 0;
     color: #7F7F7F;
     border: 1.5px solid rgba(213, 213, 213, 1);
-    border-radius: 6px;
-    padding: 6px 8px;
-    padding-right: 25px;
+    border-radius: 8px;
+    padding: 6px 30px 6px 8px;
+    background: #fff url("../assets/caret-down-solid.svg") no-repeat 95% 50%;
+    background-size: 8px;
     cursor: pointer;
+}
+
+.divider {
+    border-top: 1.5px solid #000;
+    margin: 0;
+}
+
+.asistencias table {
+    border: 1.5px solid rgba(213, 213, 213, 1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 7px;
+}
+
+.asistencias table td {
+    width: 17.5vw;
 }

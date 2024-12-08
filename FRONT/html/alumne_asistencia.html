@@ -11,8 +11,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 <body>
     <nav class="navbar">
         <div class="navbar__logo-section">
-            <img class="navbar__img" src="../assets/logoAppProject.png" alt="" height="50px" width="48px">
-            <p class="navbar__logo">CRONOS</p>
+            <i class="fa-solid fa-bars"></i>
+            <p class="navbar__logo">
+                <img class="navbar__img" src="../assets/logoAppProject.png" alt="" height="50px" width="48px">
+                CRONOS
+            </p>
             <p class="navbar__school">Instituto TIC</p>
             <i class="fa-regular fa-envelope"></i>
             <i class="fa-regular fa-bell"></i>
@@ -24,7 +27,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         </div>
     </nav>
     <div class="main-area">
-        <div class="sidebar">
+        <div class="sidebar" id="sidebar">
             <div class="item">
                 <i class="fa-regular fa-clock"></i>
                 <p>Asistencia</p>
@@ -50,11 +53,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
                 <p>Justificantes</p>
             </div>
         </div>
-        <div class="dashboard">
+        <div class="dashboard" id="dashboard">
             <h2 class="title">Resumen de asistencias</h2>
             <div class="filter-title">
-                <p>Fecha</p>
                 <p>Asignatura</p>
+                <p>Fecha</p>
             </div>
             <div class="filter-drop">
                 <select name="fechadrop" id="fechadrop">

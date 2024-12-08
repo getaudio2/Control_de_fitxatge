@@ -1,4 +1,23 @@
+const openSidebarBtn = document.querySelector(".fa-bars");
+let sidebarOpened = true;
+
+openSidebarBtn.addEventListener('click', () => {
+    const sidebar = document.getElementById("sidebar");
+    const dashboard = document.getElementById("dashboard");
+    sidebar.classList.toggle('collapsed');
+
+    if(sidebarOpened){
+        dashboard.style.marginLeft = "calc(0vw + 15px)";
+        sidebarOpened = false;
+    } else {
+        dashboard.style.marginLeft = "calc(15vw + 15px)";
+        sidebarOpened = true;
+    }
+});
+
 document.addEventListener("DOMContentLoaded", function() {
+
+
     // Cridem a l'endpoint de l'API fent un fetch
     fetch("http://localhost:8000/asistencia/listAll")  // Aquí cridem a l'endpoint de l'API
         .then(response => {

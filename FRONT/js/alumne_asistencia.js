@@ -1,6 +1,8 @@
 const openSidebarBtn = document.querySelector(".fa-bars");
 const modulosDropdown = document.getElementById("asignaturadrop");
 const asistenciaDiv = document.getElementById("asistencias");
+const profileDropdownBtn = document.querySelector(".dropbtn");
+const contentDropdown = document.querySelector(".dropdown-content");
 let sidebarOpened = true;
 
 openSidebarBtn.addEventListener('click', () => {
@@ -18,6 +20,16 @@ openSidebarBtn.addEventListener('click', () => {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
+    profileDropdownBtn.addEventListener("click", () => {
+        contentDropdown.style.display = 
+        contentDropdown.style.display === "block" ? "none" : "block";
+    });
+
+    document.addEventListener("click", function(e){
+        if(!e.target.closest(".dropdown")) {
+            contentDropdown.style.display = "none";
+        }
+    });
 
     fetch("http://localhost:8000/clase/listAll")
         .then(response => {

@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, UploadFile, File
+from fastapi import FastAPI, HTTPException, UploadFile, File, Query
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Optional
 from client import get_db_connection
@@ -99,6 +99,25 @@ def list_asiste():
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
     cursor.execute("SELECT clase.Módulo, asistencia.Fecha, asistencia.Comentario FROM asistencia inner JOIN clase ON asistencia.id_clase = clase.id;")
+    asistencias = cursor.fetchall()
+    conn.close()    
+    return asistencias
+
+@app.get("/clase/listAll")
+def list_modulos():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT DISTINCT Módulo FROM clase;")
+    modulos = cursor.fetchall()
+    conn.close()    
+    return modulos
+
+@app.get("/asistencia/")
+def list_asistencias_filtradas(modulo: str):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    query = "SELECT clase.Módulo, asistencia.Fecha, asistencia.Comentario FROM asistencia inner JOIN clase ON asistencia.id_clase = clase.id WHERE Módulo = %s;"
+    cursor.execute(query, (modulo,))
     asistencias = cursor.fetchall()
     conn.close()    
     return asistencias

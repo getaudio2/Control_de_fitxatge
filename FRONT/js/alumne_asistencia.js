@@ -94,11 +94,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     table.classList.add("asistencia-table");
 
                     const modulo = document.createElement("td");
-                    modulo.textContent = asistencia[0]; //asistencia.Módulo
+                    modulo.textContent = asistencia.Módulo;
                     row.appendChild(modulo);
 
                     const fecha = document.createElement("td");
-                    fecha.textContent = asistencia[1]; //asistencia.Fecha
+                    fecha.textContent = asistencia.Fecha;
                     row.appendChild(fecha);
                     
                     table.appendChild(row);

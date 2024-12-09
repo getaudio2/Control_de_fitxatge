@@ -95,11 +95,11 @@ def list_personas():
     return personas
 
 @app.get("/persona/")
-def list_persona_filtrada(name: str):
+def list_persona_filtrada(name: str, surname: str):
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
-    query = "SELECT * FROM persona WHERE NAME = %s;"
-    cursor.execute(query, (name,))
+    query = "SELECT * FROM persona WHERE NAME = %s and SURNAME = %s;"
+    cursor.execute(query, (name, surname))
     asistencias = cursor.fetchone()
     conn.close()    
     return asistencias

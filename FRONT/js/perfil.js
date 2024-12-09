@@ -34,8 +34,11 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    const fullNameArray = profileName.innerText.split(" ");
+
     fetch("http://localhost:8000/persona/?" + new URLSearchParams({
-        name: profileName.innerText,
+        name: fullNameArray[0],
+        surname: fullNameArray[1],
     }).toString())
     .then(response => {
         if (!response.ok) {
@@ -45,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     .then(data => {
         nameInput.placeholder = data.Name;
-        surnameInput.placeholder = data.Name;
+        surnameInput.placeholder = data.Surname;
         emailInput.placeholder = data.Email;
         deptInput.placeholder = data.Rol;
 

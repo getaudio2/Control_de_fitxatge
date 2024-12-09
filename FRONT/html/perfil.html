@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRONOS - Asistencias</title>
-    <link rel="stylesheet" href="../css/alumne_asistencia.css">
+    <title>CRONOS - Perfil</title>
+    <link rel="stylesheet" href="../css/perfil.css">
     <link rel="stylesheet" 
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
@@ -21,13 +21,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
             <i class="fa-regular fa-bell"></i>
         </div>
         <div class="navbar__user">
-            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-chalkboard-user"></i>
             <div class="dropdown">
-                <button class="dropbtn">Paúl López
+                <button class="dropbtn">Raúl Sánchez
                     <i class="fa-solid fa-angle-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="/FRONT/html/perfil.html">Editar perfil</a>
+                    <a href="#">Editar perfil</a>
                     <a href="/FRONT/html/pagina_inici.html">Cerrar sesión</a>
                 </div>
             </div>
@@ -61,27 +61,33 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
             </div>
         </div>
         <div class="dashboard" id="dashboard">
-            <h2 class="title">Resumen de asistencias</h2>
-            <div class="filter-title">
-                <p>Asignatura</p>
-                <p>Fecha</p>
+            <h2 class="title">Tu perfil</h2>
+
+            <div class="datos-perfil">
+                <div class="datos-perfil-1">
+                    <p>Nombre</p>
+                    <input type="text" class="name-input" placeholder="Raúl">
+                    <p>Apellidos</p>
+                    <input type="text" class="surname-input" placeholder="Sánchez">
+                    <p>Email</p>
+                    <input type="text" class="email-input" placeholder="raul.sanchez@hotmail.es">
+                    <p>Departamento</p>
+                    <input type="text" class="dept-input" placeholder="Docente">
+                </div>
+    
+                <div class="datos-perfil-2">
+                    <p>Número identificativo</p>
+                    <p class="perfil-id">0001111</p>
+                    <span class="circle-bg"><i class="fa-solid fa-user"></i></span>
+                    <br>
+                    <a href="">Cambiar foto</a>
+                </div>
             </div>
-            <div class="filter-drop">
-                <select name="asignaturadrop" id="asignaturadrop">
-                    <option value="asignatura" disabled selected>Asignatura</option>
-                </select>
-                <select name="fechadrop" id="fechadrop">
-                    <option value="ultimos7">Últimos 7 días</option>
-                </select>
-            </div>
-            <div class="asistencias-title">
-                <p>Asignatura</p>
-                <p>Fecha y hora</p>
-            </div>
-            <hr class="divider">
-            <div class="asistencias" id="asistencias"></div>
+
+            <!--<div class="asistencias" id="asistencias"></div>-->
+            <button class="editBtn">Editar</button>
         </div>
     </div>
-    <script src="../js/alumne_asistencia.js"></script>
+    <script src="../js/perfil.js"></script>
 </body>
 </html>

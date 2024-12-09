@@ -6,6 +6,7 @@ body {
     box-sizing: border-box;
     font-family: "Arial", sans-serif;
     background-color: #EBF3FF;
+    max-height: 100vh;
 }
 
 .navbar {
@@ -13,6 +14,7 @@ body {
     display: flex;
     justify-content: space-between;
     height: 9.5vh;
+    z-index: 10;
 }
 
 .navbar__logo-section {
@@ -95,7 +97,7 @@ body {
 
 .dropdown-content a:hover {background: #ddd;}
 
-.fa-user {
+.fa-chalkboard-user {
     color: #31A9CF;
     font-size: 24px;
     margin-right: 10px;
@@ -132,6 +134,7 @@ body {
     margin: 15px;
     margin-left: calc(15vw + 15px);
     padding: 10px 50px;
+    overflow-y: auto;
     transition: all 0.3s ease;
 }
 
@@ -229,8 +232,20 @@ body {
     display: flex;
     align-items: center;
     padding: 7px;
+    border-collapse: collapse;
 }
 
 .asistencias table td {
     width: 17.5vw;
+}
+
+.saveBtn {
+    appearance: none;
+    border: none;
+    background-color: #143751;
+    color: #fff;
+    border-radius: 8px;
+    padding: 5px 20px;
+    margin-top: 20px;
+    cursor: pointer;
 }

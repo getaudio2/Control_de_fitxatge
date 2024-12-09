@@ -94,6 +94,16 @@ def list_personas():
     conn.close()
     return personas
 
+@app.get("/persona/")
+def list_persona_filtrada(name: str):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    query = "SELECT * FROM persona WHERE NAME = %s;"
+    cursor.execute(query, (name,))
+    asistencias = cursor.fetchone()
+    conn.close()    
+    return asistencias
+
 @app.get("/asistencia/listAll")
 def list_asiste():
     conn = get_db_connection()

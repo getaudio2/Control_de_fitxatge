@@ -67,14 +67,21 @@ body {
 }
 
 .dropbtn {
+    display: flex;
+    align-items: center;
     background-color: inherit;
     color: #000;
-    padding: 10px 1px;
+    gap: 10px;
     font-size: 16px;
     border: none;
     outline: none;
     font-family: inherit;
     cursor: pointer;
+}
+
+.dropbtn .name-user {
+    font-family: "Arial", sans-serif;
+    font-size: 15px;
 }
 
 .dropdown-content {
@@ -191,6 +198,7 @@ body {
     border: 1.5px solid rgba(213, 213, 213, 1);
     border-radius: 8px;
     padding: 6px 30px 6px 8px;
+    margin-top: 5px;
 }
 
 .datos-perfil p:not(.perfil-id){
@@ -231,7 +239,7 @@ body {
     background-color: #143751;
     color: #fff;
     border-radius: 8px;
-    padding: 5px 20px;
-    margin-top: 20px;
+    padding: 5px 30px;
+    margin-top: 50px;
     cursor: pointer;
 }

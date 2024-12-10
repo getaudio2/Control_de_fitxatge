@@ -228,13 +228,14 @@ body {
 
 hr {
     border-top: 1.5px solid #EBF3FF;
-    width: calc(100% + 90px);
+    width: calc(100% + 100px);
     margin: 0 -50px;
 }
 
 .asistencias {
     display: flex;
     flex-direction: column;
+    font-size: 14px;
 }
 
 .asistencias table {

@@ -108,7 +108,7 @@ def list_persona_filtrada(name: str, surname: str):
 def list_asiste():
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT clase.Módulo, asistencia.Fecha, asistencia.Comentario FROM asistencia inner JOIN clase ON asistencia.id_clase = clase.id;")
+    cursor.execute("SELECT clase.Módulo, clase.Nombre, asistencia.Fecha, asistencia.Comentario FROM asistencia inner JOIN clase ON asistencia.id_clase = clase.id;")
     asistencias = cursor.fetchall()
     conn.close()    
     return asistencias

@@ -6,13 +6,19 @@ body {
     box-sizing: border-box;
     font-family: "Arial", sans-serif;
     background-color: #EBF3FF;
+    max-height: 100vh;
+    overflow-y: auto;
 }
 
 .navbar {
+    top: 0;
+    position: fixed;
+    width: 100%;
     background-color: #FFFFFF;
     display: flex;
     justify-content: space-between;
     height: 9.5vh;
+    z-index: 10;
 }
 
 .navbar__logo-section {
@@ -108,7 +114,7 @@ body {
 
 .main-area {
     display: flex;
-    height: calc(100vh - 62px);
+    margin-top: 62px;
 }
 
 .sidebar {
@@ -131,7 +137,8 @@ body {
     background-color: #FFFFFF;
     margin: 15px;
     margin-left: calc(15vw + 15px);
-    padding: 10px 50px;
+    padding: 5px 30px;
+    overflow: visible;
     transition: all 0.3s ease;
 }
 
@@ -165,17 +172,18 @@ body {
 
 .title {
     color: #143751;
-    font-size: 23px;
+    font-size: 20px;
     font-weight: normal;
     line-height: 120%;
 }
 
 .filter-title, .asistencias-title {
     font-weight: bold;
+    font-size: 14px;
     color: #143751;
     display: flex;
-    height: 7vh;
-    gap: 150px;
+    height: 6vh;
+    gap: 160px;
 }
 
 .filter-drop {
@@ -199,19 +207,28 @@ body {
     padding-right: 55px;
 }
 
-.divider {
-    border-top: 1.5px solid #000;
-    margin: 0;
+hr {
+    border-top: 1.5px solid #EBF3FF;
+    width: calc(100% + 100px);
+    margin: 0 -50px;
+}
+
+.asistencias {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
 }
 
 .asistencias table {
-    border: 1.5px solid rgba(213, 213, 213, 1);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    padding: 7px;
+    border-collapse: collapse;
+    border: none;
 }
 
 .asistencias table td {
-    width: 17.5vw;
+    width: 4px;
+    padding: 8px 0px;
+}
+
+.asistencias table tr {
+    border-bottom: 2px solid #EBF3FF;
 }

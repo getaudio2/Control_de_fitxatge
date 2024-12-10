@@ -3,6 +3,8 @@ const modulosDropdown = document.getElementById("asignaturadrop");
 const asistenciaDiv = document.getElementById("asistencias");
 const profileDropdownBtn = document.querySelector(".dropbtn");
 const contentDropdown = document.querySelector(".dropdown-content");
+const table = document.createElement("table");
+table.classList.add("asistencia-table");
 let sidebarOpened = true;
 
 openSidebarBtn.addEventListener('click', () => {
@@ -63,17 +65,19 @@ document.addEventListener("DOMContentLoaded", function() {
             
             // Iterar sobre els alumnes i afegir-los al DOM
             data.forEach(asistencia => {
-                const table = document.createElement("table");
                 const row = document.createElement("tr");
-                table.classList.add("asistencia-table");
 
                 const modulo = document.createElement("td");
-                modulo.textContent = asistencia.Módulo;
+                modulo.textContent = asistencia.Módulo + " " + asistencia.Nombre;
                 row.appendChild(modulo);
 
                 const fecha = document.createElement("td");
-                fecha.textContent = asistencia.Fecha;
+                var fechaStr = asistencia.Fecha.split("T");
+                fecha.textContent = fechaStr[0] + " " + fechaStr[1];
                 row.appendChild(fecha);
+                const estat = document.createElement("td");
+                estat.textContent = asistencia.Comentario;
+                row.appendChild(estat);
                 
                 table.appendChild(row);
                 asistenciaDiv.appendChild(table);

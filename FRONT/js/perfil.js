@@ -6,6 +6,7 @@ const nameInput = document.querySelector(".name-input");
 const surnameInput = document.querySelector(".surname-input");
 const emailInput = document.querySelector(".email-input");
 const deptInput = document.querySelector(".dept-input");
+const profileId = document.querySelector(".perfil-id");
 let sidebarOpened = true;
 
 openSidebarBtn.addEventListener('click', () => {
@@ -47,10 +48,11 @@ document.addEventListener("DOMContentLoaded", function() {
         return response.json();
     })
     .then(data => {
-        nameInput.placeholder = data.Name;
-        surnameInput.placeholder = data.Surname;
-        emailInput.placeholder = data.Email;
-        deptInput.placeholder = data.Rol;
+        nameInput.value = data.Name;
+        surnameInput.value = data.Surname;
+        emailInput.value = data.Email;
+        deptInput.value = data.Rol;
+        profileId.textContent = "00" + data.Id;
 
     })
     .catch(error => {

@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 table.classList.add("asistencia-table");
 
                 const nombreAlumno = document.createElement("td");
-                nombreAlumno.textContent = asistencia.Name;
+                nombreAlumno.textContent = asistencia.Name + " " + asistencia.Surname;
                 row.appendChild(nombreAlumno);
                 
                 table.appendChild(row);

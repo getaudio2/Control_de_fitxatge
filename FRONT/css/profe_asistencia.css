@@ -7,9 +7,13 @@ body {
     font-family: "Arial", sans-serif;
     background-color: #EBF3FF;
     max-height: 100vh;
+    overflow-y: auto;
 }
 
 .navbar {
+    top: 0;
+    position: fixed;
+    width: 100%;
     background-color: #FFFFFF;
     display: flex;
     justify-content: space-between;
@@ -110,6 +114,7 @@ body {
 
 .main-area {
     display: flex;
+    margin-top: 62px;
     height: calc(100vh - 62px);
 }
 
@@ -134,7 +139,6 @@ body {
     margin: 15px;
     margin-left: calc(15vw + 15px);
     padding: 10px 50px;
-    overflow-y: auto;
     transition: all 0.3s ease;
 }
 
@@ -221,9 +225,10 @@ body {
     padding-right: 55px;
 }
 
-.divider {
-    border-top: 1.5px solid #000;
-    margin: 0;
+hr {
+    border-top: 1.5px solid #EBF3FF;
+    width: calc(100% + 100px);
+    margin: 0 -50px;
 }
 
 .asistencias table {

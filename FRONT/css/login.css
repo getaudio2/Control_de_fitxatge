@@ -13,13 +13,15 @@ body {
 }
 
 .section__image {
-    background-color: white;
+    background: url("/FRONT/assets/logoAppProject.png") no-repeat;
+    background-size: 50% 50%;
+    background-position: 50%;
+    height: 100vh;
+    flex: 1;
 }
 
 .section__login {
-    width: 52vw;
-    height: 100vh;
-    display: flex;
+    flex: 1;
 }
 
 .login__contents {
@@ -30,6 +32,7 @@ body {
 }
 
 form {
+    width: 80%;
     display: flex;
     flex-direction: column;
 }
@@ -62,6 +65,10 @@ form > input {
 form > p {
     font-weight: 600;
     margin-bottom: 12px;
+}
+
+form button:hover {
+    cursor: pointer;
 }
 
 button {

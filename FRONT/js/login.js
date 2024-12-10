@@ -1,6 +1,6 @@
 const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-form-submit");
-//const loginErrorMsg = document.getElementById("login-error-msg");
+const loginErrorMsg = document.getElementById("login-error-msg");
 
 loginButton.addEventListener("click", (e) => {
     e.preventDefault();
@@ -13,6 +13,6 @@ loginButton.addEventListener("click", (e) => {
         window.location.assign("alumne_asistencia.html", "_self");
     } else {
         console.log("user not existing")
-        //loginErrorMsg.style.opacity = 1;
+        loginErrorMsg.style.opacity = 1;
     }
 })

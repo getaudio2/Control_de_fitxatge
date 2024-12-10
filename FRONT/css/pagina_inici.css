@@ -72,3 +72,7 @@
     color: #5D5A88;
     border: 1.5px solid rgba(212, 210, 227, 1);
 }
+
+.button:hover {
+    cursor: pointer;
+}

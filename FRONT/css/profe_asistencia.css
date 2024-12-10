@@ -115,7 +115,6 @@ body {
 .main-area {
     display: flex;
     margin-top: 62px;
-    height: calc(100vh - 62px);
 }
 
 .sidebar {
@@ -138,7 +137,8 @@ body {
     background-color: #FFFFFF;
     margin: 15px;
     margin-left: calc(15vw + 15px);
-    padding: 10px 50px;
+    padding: 5px 30px;
+    overflow: visible;
     transition: all 0.3s ease;
 }
 
@@ -172,25 +172,26 @@ body {
 
 .title {
     color: #143751;
-    font-size: 23px;
+    font-size: 20px;
     font-weight: normal;
     line-height: 120%;
 }
 
 .filter-title, .asistencias-title {
     font-weight: bold;
+    font-size: 14px;
     color: #143751;
     display: flex;
-    height: 7vh;
+    height: 6vh;
     gap: 120px;
 }
 
 .asistencias-title {
     align-items: center;
-    height: 4vh;
+    height: 0vh;
     margin-top: 25px;
-    margin-bottom: 10px;
-    gap: 80px;
+    margin-bottom: 20px;
+    gap: 90px;
 }
 
 .asistencias-title div:not(:first-child) {
@@ -206,7 +207,7 @@ body {
 
 .filter-drop {
     display: flex;
-    gap: 74px;
+    gap: 65px;
     margin-bottom: 10px;
 }
 
@@ -227,21 +228,53 @@ body {
 
 hr {
     border-top: 1.5px solid #EBF3FF;
-    width: calc(100% + 100px);
+    width: calc(100% + 90px);
     margin: 0 -50px;
 }
 
-.asistencias table {
-    border: 1.5px solid rgba(213, 213, 213, 1);
-    border-radius: 8px;
+.asistencias {
     display: flex;
-    align-items: center;
-    padding: 7px;
+    flex-direction: column;
+}
+
+.asistencias table {
     border-collapse: collapse;
+    border: none;
 }
 
 .asistencias table td {
-    width: 17.5vw;
+    padding: 8px 0px;
+}
+
+.asistencias table tr {
+    border-bottom: 2px solid #EBF3FF;
+    width: 100%;
+}
+
+.circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: #e7e7e7;
+    transition: background-color 0.3, border-color 0.3;
+}
+
+.circle.green.checked {
+    background-color: #fff;
+    border: 6px solid #34C759;
+}
+.circle.yellow.checked {
+    background-color: #fff;
+    border: 6px solid #FFCC00;
+}.circle.red.checked {
+    background-color: #fff;
+    border: 6px solid #FF3B30;
+}.circle.blue.checked {
+    background-color: #fff;
+    border: 6px solid #32ADE6;
 }
 
 .saveBtn {
@@ -251,6 +284,6 @@ hr {
     color: #fff;
     border-radius: 8px;
     padding: 5px 20px;
-    margin-top: 20px;
+    margin: 25px 0px;
     cursor: pointer;
 }

@@ -1,15 +1,15 @@
-const loginForm = document.getElementById("login-form");
-const loginButton = document.getElementById("login-form-submit");
+const form = document.getElementById("login-form");
 const loginErrorMsg = document.getElementById("login-error-msg");
 
-loginButton.addEventListener("click", (e) => {
+form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const username = loginForm.username.value;
-    const password = loginForm.password.value;
-    const idschool = loginForm.idschool.value;
 
-    if (username === "admin" && password === "admin" && idschool === "1234") {
-        alert("You have successfully logged in.");
+    const email = form.email.value;
+    const password = form.password.value;
+    const idschool = form.idschool.value;
+
+    if (email === "admin@example.com" && password === "admin" && idschool === "1234") {
+        // window.location.href = "alumne_asistencia.html";
         window.location.assign("alumne_asistencia.html", "_self");
     } else {
         console.log("user not existing")

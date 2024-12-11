@@ -4,9 +4,34 @@ const gruposDropdown = document.getElementById("grupodrop");
 const asistenciaDiv = document.getElementById("asistencias");
 const profileDropdownBtn = document.querySelector(".dropbtn");
 const contentDropdown = document.querySelector(".dropdown-content");
+const saveAsistenciasBtn = document.querySelector(".saveBtn");
 const table = document.createElement("table");
 table.classList.add("asistencia-table");
 let sidebarOpened = true;
+
+/*saveAsistenciasBtn.addEventListener('click', guardarAsistencias);
+
+function recolectarAsistencias() {
+    const tableBody = document.querySelector(".asistencia-table");
+    const datosAsistencia = [];
+    const grupoId = gruposDropdown.value;
+
+    for (let i = 0; i < tableBody.rows.length; i++) {
+        let tr = tableBody.rows[i];
+        let cell = tr.cells[0];
+        let alumnoNombre = cell.innerText;
+        let estado = "Presente";
+
+        datosAsistencia.push({
+            fecha: new Date().toISOString().split("T")[0],
+
+        });
+    }
+}
+
+function guardarAsistencias() {
+    recolectarAsistencias();
+}*/
 
 openSidebarBtn.addEventListener('click', () => {
     const sidebar = document.getElementById("sidebar");
@@ -92,7 +117,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 // Iterar sobre els alumnes i afegir-los al DOM
                 data.forEach(asistencia => {
-                    console.log(asistencia.Name + " " + asistencia.Surname);
                     const row = document.createElement("tr");
 
                     const nombreAlumno = document.createElement("td");
@@ -146,7 +170,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 // Iterar sobre els alumnes i afegir-los al DOM
                 data.forEach(asistencia => {
-                    console.log(asistencia.Name + " " + asistencia.Surname);
                     const row = document.createElement("tr");
 
                     const nombreAlumno = document.createElement("td");

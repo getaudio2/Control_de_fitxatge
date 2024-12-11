@@ -94,6 +94,7 @@ def list_personas():
     conn.close()
     return personas
 
+# Endpoint para enviar la información de una persona a Editar perfil
 @app.get("/persona/")
 def list_persona_filtrada(name: str, surname: str):
     conn = get_db_connection()
@@ -104,6 +105,7 @@ def list_persona_filtrada(name: str, surname: str):
     conn.close()    
     return asistencias
 
+# Endpoint para listar las asistencias a alumne_asistencias.html
 @app.get("/asistencia/listAll")
 def list_asiste():
     conn = get_db_connection()
@@ -113,7 +115,8 @@ def list_asiste():
     conn.close()    
     return asistencias
 
-@app.get("/clase/listAll")
+# Endpoint para rellenar el dropdown de Asignaturas con módulos
+@app.get("/clase/modulo/listAll")
 def list_modulos():
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
@@ -122,6 +125,7 @@ def list_modulos():
     conn.close()    
     return modulos
 
+# Endpoint para filtrar las asistencias según el módulo seleccionado
 @app.get("/asistencia/")
 def list_asistencias_filtradas(modulo: str):
     conn = get_db_connection()
@@ -131,3 +135,24 @@ def list_asistencias_filtradas(modulo: str):
     asistencias = cursor.fetchall()
     conn.close()    
     return asistencias
+
+# Endpoint para rellenar el dropdown de Grupo con grupos "Ej: DAW2A"
+@app.get("/grupo/listAll")
+def list_grupos():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT Nombre_grupo FROM grupo;")
+    modulos = cursor.fetchall()
+    conn.close()    
+    return modulos
+
+# Endpoint para filtrar lista de alumnos por grupo
+@app.get("/persona/alumno/listByGroup/")
+def list_grupos(nombreGrupo: str):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    query = "SELECT p.Name, p.Surname FROM persona p JOIN grupo g ON p.Grupo_id = g.Id WHERE g.Nombre_grupo = %s AND p.Rol = 'Alumno';"
+    cursor.execute(query, (nombreGrupo,))
+    alumnos = cursor.fetchall()
+    conn.close()    
+    return alumnos

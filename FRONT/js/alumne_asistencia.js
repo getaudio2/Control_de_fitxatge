@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    fetch("http://localhost:8000/clase/listAll")
+    fetch("http://localhost:8000/clase/modulo/listAll")
         .then(response => {
             if (!response.ok) {
                 throw new Error("Error a la resposta del servidor");

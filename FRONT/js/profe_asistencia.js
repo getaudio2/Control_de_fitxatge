@@ -1,5 +1,6 @@
 const openSidebarBtn = document.querySelector(".fa-bars");
 const modulosDropdown = document.getElementById("asignaturadrop");
+const gruposDropdown = document.getElementById("grupodrop");
 const asistenciaDiv = document.getElementById("asistencias");
 const profileDropdownBtn = document.querySelector(".dropbtn");
 const contentDropdown = document.querySelector(".dropdown-content");
@@ -33,8 +34,29 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    // Càrrega de grups
+    fetch("http://localhost:8000/grupo/listAll")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error a la resposta del servidor");
+            }
+            return response.json();
+        })
+        .then(data => {
+            data.forEach(option => {
+                const opt = document.createElement("option");
+                const grupo = option.Nombre_grupo;
+                opt.value = grupo;
+                opt.textContent = grupo;
+                gruposDropdown.appendChild(opt);
+            });
+        })
+        .catch(error => {
+            console.error("Error capturat:", error);
+            alert("Error al carregar la llista de mòduls");
+        });
     // Càrrega de mòduls
-    fetch("http://localhost:8000/clase/listAll")
+    fetch("http://localhost:8000/clase/modulo/listAll")
         .then(response => {
             if (!response.ok) {
                 throw new Error("Error a la resposta del servidor");
@@ -99,4 +121,60 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error("Error capturat:", error);
             alert("Error al carregar la llista d'alumnes");
         });
+
+    // Càrrega d'alumnes segons el GRUP
+    gruposDropdown.addEventListener("change", () => {
+        const selectedValue = gruposDropdown.value;
+        if (selectedValue) {
+            fetch("http://localhost:8000/persona/alumno/listByGroup/?" + new URLSearchParams({
+                nombreGrupo: selectedValue,
+            }).toString())  // Aquí cridem a l'endpoint de l'API
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Error a la resposta del servidor");
+                }
+                return response.json();
+            })
+            .then(data => {
+                asistenciaDiv.innerHTML = ""; // Netejar la taula abans d'afegir res
+                table.innerHTML = "";
+                
+                // Iterar sobre els alumnes i afegir-los al DOM
+                data.forEach(asistencia => {
+                    console.log(asistencia.Name + " " + asistencia.Surname);
+                    const row = document.createElement("tr");
+
+                    const nombreAlumno = document.createElement("td");
+                    nombreAlumno.textContent = asistencia.Name + " " + asistencia.Surname;
+                    row.appendChild(nombreAlumno);
+
+                    const circleColor = ['green', 'yellow', 'red', 'blue'];
+                    
+                    circleColor.forEach((color, index) => {
+                        const circleCell = document.createElement('td');
+                        const circle = document.createElement('div');
+                        circle.classList.add('circle', color);
+
+                        if (index === 0) circle.classList.add('checked');
+
+                        circle.addEventListener('click', () => {
+                            const siblingCircles = circleCell.parentElement.querySelectorAll('.circle');
+                            siblingCircles.forEach(sibling => sibling.classList.remove('checked'));
+                            circle.classList.toggle('checked');
+                        });
+
+                        circleCell.appendChild(circle);
+                        row.appendChild(circleCell);
+                    });
+                    
+                    table.appendChild(row);
+                    asistenciaDiv.appendChild(table);
+                });
+            })
+            .catch(error => {
+                console.error("Error capturat:", error);
+                alert("Error al carregar la llista d'alumnes");
+            });
+        }
+    });
 });

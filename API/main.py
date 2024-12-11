@@ -1,14 +1,12 @@
-from fastapi import FastAPI, HTTPException, UploadFile, File
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from typing import List, Optional
+import mysql.connector
 from client import get_db_connection
 from persona import Persona
 from clase import Clase
 from asistencia import Asistencia
 from franja import Franja
 from grado import Grado
-import csv
-from io import StringIO
 
 app = FastAPI()
 
@@ -156,3 +154,26 @@ def list_grupos(nombreGrupo: str):
     alumnos = cursor.fetchall()
     conn.close()    
     return alumnos
+
+# Endpoint para guardar la asistencia de un grupo de alumnos
+# a la tabla asistencia de la database
+@app.post("/guardar-asistencia-alumnos")
+def guardar_asistencia_alumnos_DB(asistencias: list[Asistencia]):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    
+    try:
+        for asistencia in asistencias:
+            query = """
+                INSERT INTO asistencia (Fecha, Persona_id, Comentario, Id_clase)
+                VALUES (%s,%s,%s,%s);
+            """
+            cursor.execute(query, (asistencia.fecha, asistencia.persona_id, asistencia.comentario, asistencia.id_clase))
+        conn.commit()
+    except mysql.connector.Error as e:
+        conn.rollback()
+        raise HTTPException(status_code=500, detail="Error al guardar asistencias: " + str(e))
+    finally:
+        conn.close()
+
+    return {"mensaje": "Asistencias guardadas correctamente"}

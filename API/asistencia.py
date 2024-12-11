@@ -3,7 +3,7 @@ from typing import Optional
 
 # Pydantic Model for Asistencia
 class Asistencia(BaseModel):
-    persona_id: int
-    modulo: str
     fecha: str
-    Comentario: str
+    persona_id: int
+    comentario: str
+    id_clase: str

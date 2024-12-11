@@ -128,7 +128,7 @@ def list_modulos():
 def list_asistencias_filtradas(modulo: str):
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
-    query = "SELECT clase.Módulo, asistencia.Fecha, asistencia.Comentario FROM asistencia inner JOIN clase ON asistencia.id_clase = clase.id WHERE Módulo = %s;"
+    query = "SELECT clase.Módulo, clase.Nombre, asistencia.Fecha, asistencia.Comentario FROM asistencia inner JOIN clase ON asistencia.Id_clase = clase.Id WHERE Módulo = %s;"
     cursor.execute(query, (modulo,))
     asistencias = cursor.fetchall()
     conn.close()    

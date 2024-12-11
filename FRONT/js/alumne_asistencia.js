@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     modulosDropdown.addEventListener("change", () => {
         const selectedValue = modulosDropdown.value;
-        if (selectedValue) {
+        if (selectedValue && !(selectedValue === "asignatura")) {
             fetch("http://localhost:8000/asistencia/?" + new URLSearchParams({
                 modulo: selectedValue,
             }).toString())  // Aquí cridem a l'endpoint de l'API
@@ -102,20 +102,23 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .then(data => {
                 asistenciaDiv.innerHTML = ""; // Netejar la taula abans d'afegir res
+                table.innerHTML = "";
                 
                 // Iterar sobre els alumnes i afegir-los al DOM
                 data.forEach(asistencia => {
-                    const table = document.createElement("table");
                     const row = document.createElement("tr");
-                    table.classList.add("asistencia-table");
 
                     const modulo = document.createElement("td");
-                    modulo.textContent = asistencia.Módulo;
+                    modulo.textContent = asistencia.Módulo + " " + asistencia.Nombre;
                     row.appendChild(modulo);
 
                     const fecha = document.createElement("td");
-                    fecha.textContent = asistencia.Fecha;
+                    var fechaStr = asistencia.Fecha.split("T");
+                    fecha.textContent = fechaStr[0] + " " + fechaStr[1];
                     row.appendChild(fecha);
+                    const estat = document.createElement("td");
+                    estat.textContent = asistencia.Comentario;
+                    row.appendChild(estat);
                     
                     table.appendChild(row);
                     asistenciaDiv.appendChild(table);

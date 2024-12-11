@@ -152,30 +152,31 @@ body {
 .sidebar .item {
     display: flex;
     align-items: center;
-    gap: 4px;
-    padding: 10px 13px;
+    gap: 0px;
+    padding: 6px 20px;
     color: #B7ECFD;
     transition: all 0.3s ease;
 }
 
 .sidebar .item i {
     flex: 1;
-    font-size: 25px;
+    font-size: 20px;
     transition: all 0.3s ease;
 }
 
 .sidebar .item p {
     flex: 3;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     transition: all 0.3s ease;
 }
 
 .sidebar .item a {
+    padding: 14px 0px;
     text-decoration: none;
     color: #B7ECFD;
     flex: 3;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     transition: all 0.3s ease;
 }

@@ -104,6 +104,12 @@ body {
 
 .dropdown-content a:hover {background: #ddd;}
 
+.fa-user {
+    color: #31A9CF;
+    font-size: 24px;
+    margin-right: 10px;
+}
+
 .fa-chalkboard-user {
     color: #31A9CF;
     font-size: 24px;
@@ -149,7 +155,7 @@ body {
     display: flex;
     align-items: center;
     gap: 4px;
-    padding: 0px 13px;
+    padding: 10px 13px;
     color: #B7ECFD;
     transition: all 0.3s ease;
 }
@@ -161,6 +167,15 @@ body {
 }
 
 .sidebar .item p {
+    flex: 3;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.sidebar .item a {
+    text-decoration: none;
+    color: #B7ECFD;
     flex: 3;
     font-size: 16px;
     font-weight: 500;

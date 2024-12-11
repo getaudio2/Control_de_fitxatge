@@ -2,6 +2,8 @@ const openSidebarBtn = document.querySelector(".fa-bars");
 const profileDropdownBtn = document.querySelector(".dropbtn");
 const contentDropdown = document.querySelector(".dropdown-content");
 const profileName = document.querySelector(".name-user");
+const iconUser = document.getElementById("icon-user");
+const asistenciaLink = document.getElementById("asistencia-link");
 const nameInput = document.querySelector(".name-input");
 const surnameInput = document.querySelector(".surname-input");
 const emailInput = document.querySelector(".email-input");
@@ -48,6 +50,14 @@ document.addEventListener("DOMContentLoaded", function() {
         return response.json();
     })
     .then(data => {
+        if (data.Rol === "Profesor"){
+            iconUser.classList.remove("fa-user");
+            iconUser.classList.add("fa-chalkboard-user");
+            asistenciaLink.href = "./profe_asistencia.html";
+        } else if (data.Rol === "Alumno") {
+            asistenciaLink.href = "./alumne_asistencia.html";
+        }
+
         nameInput.value = data.Name;
         surnameInput.value = data.Surname;
         emailInput.value = data.Email;

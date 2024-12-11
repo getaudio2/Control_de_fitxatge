@@ -75,52 +75,57 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error("Error capturat:", error);
             alert("Error al carregar la llista de mòduls");
         });
-    // Càrrega d'alumnes
-    fetch("http://localhost:8000/persona/alumnosAll")  // Aquí cridem a l'endpoint de l'API
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Error a la resposta del servidor");
-            }
-            return response.json();
-        })
-        .then(data => {
-            asistenciaDiv.innerHTML = ""; // Netejar la taula abans d'afegir res
-            
-            // Iterar sobre els alumnes i afegir-los al DOM
-            data.forEach(asistencia => {
-                const row = document.createElement("tr");
 
-                const nombreAlumno = document.createElement("td");
-                nombreAlumno.textContent = asistencia.Name + " " + asistencia.Surname;
-                row.appendChild(nombreAlumno);
-
-                const circleColor = ['green', 'yellow', 'red', 'blue'];
+    // Càrrega d'alumnes segons GRUP per default ("DAW2A" serà default)
+    fetch("http://localhost:8000/persona/alumno/listByGroup/?" + new URLSearchParams({
+                nombreGrupo: 'DAW2A',
+            }).toString())  // Aquí cridem a l'endpoint de l'API
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Error a la resposta del servidor");
+                }
+                return response.json();
+            })
+            .then(data => {
+                asistenciaDiv.innerHTML = ""; // Netejar la taula abans d'afegir res
+                table.innerHTML = "";
                 
-                circleColor.forEach((color, index) => {
-                    const circleCell = document.createElement('td');
-                    const circle = document.createElement('div');
-                    circle.classList.add('circle', color);
+                // Iterar sobre els alumnes i afegir-los al DOM
+                data.forEach(asistencia => {
+                    console.log(asistencia.Name + " " + asistencia.Surname);
+                    const row = document.createElement("tr");
 
-                    if (index === 0) circle.classList.add('checked');
+                    const nombreAlumno = document.createElement("td");
+                    nombreAlumno.textContent = asistencia.Name + " " + asistencia.Surname;
+                    row.appendChild(nombreAlumno);
 
-                    circle.addEventListener('click', () => {
-                        const siblingCircles = circleCell.parentElement.querySelectorAll('.circle');
-                        siblingCircles.forEach(sibling => sibling.classList.remove('checked'));
-                        circle.classList.toggle('checked');
+                    const circleColor = ['green', 'yellow', 'red', 'blue'];
+                    
+                    circleColor.forEach((color, index) => {
+                        const circleCell = document.createElement('td');
+                        const circle = document.createElement('div');
+                        circle.classList.add('circle', color);
+
+                        if (index === 0) circle.classList.add('checked');
+
+                        circle.addEventListener('click', () => {
+                            const siblingCircles = circleCell.parentElement.querySelectorAll('.circle');
+                            siblingCircles.forEach(sibling => sibling.classList.remove('checked'));
+                            circle.classList.toggle('checked');
+                        });
+
+                        circleCell.appendChild(circle);
+                        row.appendChild(circleCell);
                     });
-
-                    circleCell.appendChild(circle);
-                    row.appendChild(circleCell);
+                    
+                    table.appendChild(row);
+                    asistenciaDiv.appendChild(table);
                 });
-                
-                table.appendChild(row);
-                asistenciaDiv.appendChild(table);
+            })
+            .catch(error => {
+                console.error("Error capturat:", error);
+                alert("Error al carregar la llista d'alumnes");
             });
-        })
-        .catch(error => {
-            console.error("Error capturat:", error);
-            alert("Error al carregar la llista d'alumnes");
-        });
 
     // Càrrega d'alumnes segons el GRUP
     gruposDropdown.addEventListener("change", () => {

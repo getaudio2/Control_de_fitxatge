@@ -9,7 +9,7 @@ const table = document.createElement("table");
 table.classList.add("asistencia-table");
 let sidebarOpened = true;
 
-/*saveAsistenciasBtn.addEventListener('click', guardarAsistencias);
+saveAsistenciasBtn.addEventListener('click', guardarAsistencias);
 
 function recolectarAsistencias() {
     const tableBody = document.querySelector(".asistencia-table");
@@ -31,7 +31,9 @@ function recolectarAsistencias() {
 
 function guardarAsistencias() {
     recolectarAsistencias();
-}*/
+
+
+}
 
 openSidebarBtn.addEventListener('click', () => {
     const sidebar = document.getElementById("sidebar");
@@ -75,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 opt.textContent = grupo;
                 gruposDropdown.appendChild(opt);
             });
+            gruposDropdown.selectedIndex = 1;
         })
         .catch(error => {
             console.error("Error capturat:", error);
@@ -154,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Càrrega d'alumnes segons el GRUP
     gruposDropdown.addEventListener("change", () => {
         const selectedValue = gruposDropdown.value;
-        if (selectedValue) {
+        if (selectedValue && !(selectedValue === "grupo")) {
             fetch("http://localhost:8000/persona/alumno/listByGroup/?" + new URLSearchParams({
                 nombreGrupo: selectedValue,
             }).toString())  // Aquí cridem a l'endpoint de l'API

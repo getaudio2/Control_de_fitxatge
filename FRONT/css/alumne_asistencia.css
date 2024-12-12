@@ -6,8 +6,6 @@ body {
     box-sizing: border-box;
     font-family: "Arial", sans-serif;
     background-color: #EBF3FF;
-    max-height: 100vh;
-    overflow-y: auto;
 }
 
 .navbar {
@@ -95,11 +93,13 @@ body {
     top: 100%;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,.2);
+    border: 1px solid #000;
+    border-radius: 10px;
     z-index: 1;
 }
 
 .dropdown-content a {
+    border-radius: 10px;
     color: #000;
     padding: 8px 12px;
     text-decoration: none;
@@ -187,6 +187,11 @@ body {
     cursor: pointer;
 }
 
+.sidebar .item:hover a{
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
 .title {
     color: #143751;
     font-size: 20px;
@@ -248,4 +253,15 @@ hr {
 
 .asistencias table tr {
     border-bottom: 2px solid #EBF3FF;
+}
+
+.error-div {
+    z-index: 20;
+    top: 80%;
+    left: 80%;
+    position: fixed;
+    border: 3px solid #fa6e6e;
+    border-radius: 20px;
+    background-color: #fea9a9;
+    padding-right: 50px;
 }

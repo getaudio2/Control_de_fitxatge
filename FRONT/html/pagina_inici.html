@@ -17,7 +17,7 @@
             <button class="button borderless-button">Ayuda</button>
             <button class="button borderless-button">Funcionalidades</button>
             <button class="button borderless-button">Contacto</button>
-            <button class="button white-button">Login</button>
+            <button class="button white-button" id="login-btn">Login</button>
             <button class="button blue-button">Registrarse</button>
         </div>
     </navbar>
@@ -28,9 +28,16 @@
         </h4>
         <section class="button-section">
             <button class="button comenzar-button blue-button" id="comenzar-btn">Comenzar</button>
-            <button class="button video-button white-button">Ver vídeo</button>
+            <button class="button video-button white-button"><a href="#app-demonstration">Ver vídeo</a></button>
         </section>
     </section>
+    <div class="videoDiv" id="app-demonstration">
+        <h3 class="main-title">Aplicación personalizada</h3>
+        <video width="320" height="240" controls class="video">
+            <source src="/FRONT/assets/mov_bbb.mp4" type="video/mp4">
+          Tu navegador no soporta el elemento de video.
+          </video>
+    </div>
     <script src="../js/pagina_inici.js"></script>
 </body>
 </html>

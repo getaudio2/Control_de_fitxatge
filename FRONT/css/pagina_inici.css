@@ -6,6 +6,10 @@
     background-color: #EBF3FF;
 }
 
+html {
+    scroll-behavior:smooth;
+}
+
 .navbar {
     display: flex;
     justify-content: space-around;
@@ -74,5 +78,22 @@
 }
 
 .button:hover {
+    cursor: pointer;
+}
+
+.videoDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    height: 100vh;
+}
+
+.button-section a {
+    appearance: none;
+    text-decoration: none;
+    background-color: #fff;
+    color: #5D5A88;
     cursor: pointer;
 }

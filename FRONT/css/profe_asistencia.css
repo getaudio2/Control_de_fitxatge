@@ -95,11 +95,13 @@ body {
     top: 100%;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,.2);
+    border: 1px solid #000;
+    border-radius: 10px;
     z-index: 1;
 }
 
 .dropdown-content a {
+    border-radius: 10px;
     color: #000;
     padding: 8px 12px;
     text-decoration: none;
@@ -185,6 +187,11 @@ body {
 
 .sidebar .item:hover {
     background-color: rgba(255, 255, 255, .2);
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.sidebar .item:hover a{
     color: #FFFFFF;
     cursor: pointer;
 }

@@ -3,6 +3,7 @@ const modulosDropdown = document.getElementById("asignaturadrop");
 const asistenciaDiv = document.getElementById("asistencias");
 const profileDropdownBtn = document.querySelector(".dropbtn");
 const contentDropdown = document.querySelector(".dropdown-content");
+const errorDiv = document.getElementById("error-div");
 const table = document.createElement("table");
 table.classList.add("asistencia-table");
 let sidebarOpened = true;
@@ -33,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    // Fetch per popular el dropdown d'asignatures
     fetch("http://localhost:8000/clase/modulo/listAll")
         .then(response => {
             if (!response.ok) {
@@ -50,9 +52,10 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .catch(error => {
             console.error("Error capturat:", error);
-            alert("Error al carregar la llista de mòduls");
+            errorDiv.style.visibility = "hidden";
+            errorDiv.textContent = "Error al carregar la llista de mòduls";
         });
-    // Cridem a l'endpoint de l'API fent un fetch
+    // Fetch per popular la taula amb totes les asistències
     fetch("http://localhost:8000/asistencia/listAll")  // Aquí cridem a l'endpoint de l'API
         .then(response => {
             if (!response.ok) {
@@ -85,9 +88,11 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .catch(error => {
             console.error("Error capturat:", error);
-            alert("Error al carregar la llista d'alumnes");
+            errorDiv.textContent = "Error al carregar la llista de d'alumnes";
         });
 
+    // Actualizar la lista de asignaturas filtradas por el módulo
+    // seleccionado en el dropdown
     modulosDropdown.addEventListener("change", () => {
         const selectedValue = modulosDropdown.value;
         if (selectedValue && !(selectedValue === "asignatura")) {
@@ -126,8 +131,46 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .catch(error => {
                 console.error("Error capturat:", error);
-                alert("Error al carregar la llista d'alumnes");
+            errorDiv.textContent = "Error al carregar la llista de d'alumnes";
             });
+        } else {
+        // Si no selecciona ningún módulo en el dropdown
+        // carga todas las asistencias de nuevo
+        fetch("http://localhost:8000/asistencia/listAll")  // Aquí cridem a l'endpoint de l'API
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error a la resposta del servidor");
+            }
+            return response.json();
+        })
+        .then(data => {
+            asistenciaDiv.innerHTML = ""; // Netejar la taula abans d'afegir res
+            table.innerHTML = "";
+            
+            // Iterar sobre els alumnes i afegir-los al DOM
+            data.forEach(asistencia => {
+                const row = document.createElement("tr");
+
+                const modulo = document.createElement("td");
+                modulo.textContent = asistencia.Módulo + " " + asistencia.Nombre;
+                row.appendChild(modulo);
+
+                const fecha = document.createElement("td");
+                var fechaStr = asistencia.Fecha.split("T");
+                fecha.textContent = fechaStr[0] + " " + fechaStr[1];
+                row.appendChild(fecha);
+                const estat = document.createElement("td");
+                estat.textContent = asistencia.Comentario;
+                row.appendChild(estat);
+                
+                table.appendChild(row);
+                asistenciaDiv.appendChild(table);
+            });
+        })
+        .catch(error => {
+            console.error("Error capturat:", error);
+            errorDiv.textContent = "Error al carregar la llista de d'alumnes";
+        });
         }
     });
 });

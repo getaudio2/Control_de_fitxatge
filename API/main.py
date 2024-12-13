@@ -108,7 +108,7 @@ def list_persona_filtrada(name: str, surname: str):
 def list_asiste():
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT clase.Módulo, clase.Nombre, asistencia.Fecha, asistencia.Comentario FROM asistencia inner JOIN clase ON asistencia.id_clase = clase.id;")
+    cursor.execute("SELECT c.Módulo, c.Nombre, a.Fecha, a.Comentario FROM asistencia a inner JOIN clase c ON a.id_clase = c.id ORDER BY a.Fecha DESC;")
     asistencias = cursor.fetchall()
     conn.close()    
     return asistencias
@@ -128,8 +128,19 @@ def list_modulos():
 def list_asistencias_filtradas(modulo: str):
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
-    query = "SELECT clase.Módulo, clase.Nombre, asistencia.Fecha, asistencia.Comentario FROM asistencia inner JOIN clase ON asistencia.Id_clase = clase.Id WHERE Módulo = %s;"
+    query = "SELECT c.Módulo, c.Nombre, a.Fecha, a.Comentario FROM asistencia a inner JOIN clase c ON a.Id_clase = c.Id WHERE Módulo = %s ORDER BY a.Fecha DESC;"
     cursor.execute(query, (modulo,))
+    asistencias = cursor.fetchall()
+    conn.close()    
+    return asistencias
+
+# Endpoint para filtrar las asistencias según el rango de tiempo
+@app.get("/asistencia/porFecha/")
+def list_asistencias_filtradas(fechaActual: str, fechaSemanaAnterior: str):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    query = "SELECT c.Módulo, c.Nombre, a.Fecha, a.Comentario FROM asistencia a inner JOIN clase c ON a.id_clase = c.id WHERE Fecha BETWEEN %s AND %s ORDER BY a.Fecha DESC;"
+    cursor.execute(query, (fechaSemanaAnterior, fechaActual))
     asistencias = cursor.fetchall()
     conn.close()    
     return asistencias

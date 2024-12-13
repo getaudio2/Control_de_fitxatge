@@ -217,7 +217,7 @@ body {
 
 .asistencias-title {
     align-items: center;
-    height: 0vh;
+    min-height: 0vh;
     margin-top: 25px;
     margin-bottom: 20px;
     gap: 90px;

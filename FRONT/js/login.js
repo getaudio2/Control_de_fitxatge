@@ -1,5 +1,5 @@
 const form = document.getElementById("login-form");
-const loginErrorMsg = document.getElementById("login-error-msg");
+const loginErrorMsg = document.getElementById("error-div");
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();

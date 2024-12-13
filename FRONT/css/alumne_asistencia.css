@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+
+body, html {
+    overflow: hidden;
+    position: absolute;
+}
 body {
     margin: 0;
     padding: 0;
@@ -17,6 +22,7 @@ body {
     justify-content: space-between;
     height: 9.5vh;
     z-index: 10;
+    min-height: 60px;
 }
 
 .navbar__logo-section {
@@ -120,12 +126,13 @@ body {
 }
 
 .main-area {
+    min-height: 585px;
     display: flex;
     margin-top: 62px;
 }
 
 .sidebar {
-    height: calc(100vh - 62px);
+    min-height: 585px;
     width: 15vw;
     position: fixed;
     z-index: 1;
@@ -140,6 +147,7 @@ body {
 }
 
 .dashboard {
+    min-height: 585px;
     width: 100vw;
     background-color: #FFFFFF;
     margin: 15px;
@@ -204,7 +212,7 @@ body {
     font-size: 14px;
     color: #143751;
     display: flex;
-    height: 6vh;
+    min-height: 6vh;
     gap: 160px;
 }
 
@@ -264,4 +272,5 @@ hr {
     border-radius: 20px;
     background-color: #fea9a9;
     padding-right: 50px;
+    opacity: 0;
 }

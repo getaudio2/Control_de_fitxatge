@@ -15,6 +15,7 @@ body {
     justify-content: space-between;
     height: 9.5vh;
     z-index: 10;
+    min-height: 60px;
 }
 
 .navbar__logo-section {
@@ -126,9 +127,11 @@ body {
 .main-area {
     display: flex;
     height: calc(100vh - 62px);
+    min-height: 585px;
 }
 
 .sidebar {
+    min-height: 585px;
     height: calc(100vh - 62px);
     width: 15vw;
     position: fixed;
@@ -144,6 +147,7 @@ body {
 }
 
 .dashboard {
+    min-height: 585px;
     width: 100vw;
     background-color: #FFFFFF;
     margin: 15px;

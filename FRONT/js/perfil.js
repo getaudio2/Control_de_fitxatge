@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const fullNameArray = profileName.innerText.split(" ");
 
+    // Fetch para recibir los datos del perfil de una persona según su nombre
     fetch("http://localhost:8000/persona/?" + new URLSearchParams({
         name: fullNameArray[0],
         surname: fullNameArray[1],

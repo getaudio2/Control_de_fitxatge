@@ -73,6 +73,8 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(data => {
             asistenciaDiv.innerHTML = ""; // Netejar la taula abans d'afegir res
+
+            console.log(data);
             
             // Iterar sobre els alumnes i afegir-los al DOM
             data.forEach(asistencia => {

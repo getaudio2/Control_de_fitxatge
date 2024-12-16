@@ -127,7 +127,7 @@ body {
 }
 
 .sidebar {
-    min-height: 585px;
+    min-height: 90.5vh;
     width: 15vw;
     position: fixed;
     z-index: 1;
@@ -142,7 +142,7 @@ body {
 }
 
 .dashboard {
-    min-height: 585px;
+    min-height: 90.5vh;
     width: 100vw;
     background-color: #FFFFFF;
     margin: 15px;

@@ -52,8 +52,8 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     .then(data => {
         if (data.Rol === "Profesor"){
-            iconUser.classList.remove("fa-user");
-            iconUser.classList.add("fa-chalkboard-user");
+            iconUser.classList.toggle("fa-user");
+            iconUser.classList.toggle("fa-chalkboard-user");
             asistenciaLink.href = "./profe_asistencia.html";
         } else if (data.Rol === "Alumno") {
             asistenciaLink.href = "./alumne_asistencia.html";
@@ -64,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function() {
         emailInput.value = data.Email;
         deptInput.value = data.Rol;
         profileId.textContent = "00" + data.Id;
-
     })
     .catch(error => {
         console.error("Error capturat:", error);

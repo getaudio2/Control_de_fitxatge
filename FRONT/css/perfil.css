@@ -107,13 +107,7 @@ body {
 
 .dropdown-content a:hover {background: #ddd;}
 
-.fa-user {
-    color: #31A9CF;
-    font-size: 24px;
-    margin-right: 10px;
-}
-
-.fa-chalkboard-user {
+.fa-chalkboard-user, #icon-user {
     color: #31A9CF;
     font-size: 24px;
     margin-right: 10px;
@@ -252,7 +246,7 @@ body {
     margin-bottom: 25px;
 }
 
-.fa-user {
+.circle-bg > i {
     color: #31A9CF;
     font-size: 100px;
     padding: 20px 30px;

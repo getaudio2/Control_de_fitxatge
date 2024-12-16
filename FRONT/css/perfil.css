@@ -10,6 +10,9 @@ body {
 }
 
 .navbar {
+    top: 0;
+    position: fixed;
+    width: 100%;
     background-color: #FFFFFF;
     display: flex;
     justify-content: space-between;
@@ -120,13 +123,12 @@ body {
 
 .main-area {
     display: flex;
-    height: calc(100vh - 62px);
+    margin-top: 62px;
     min-height: 585px;
 }
 
 .sidebar {
-    min-height: 585px;
-    height: calc(100vh - 62px);
+    min-height: 90.5vh;
     width: 15vw;
     position: fixed;
     z-index: 1;

@@ -49,6 +49,24 @@ openSidebarBtn.addEventListener('click', () => {
     }
 });
 
+function addHeaders() {
+    const header = document.createElement("thead");
+    const headerRow = document.createElement("tr");
+    const headerTexts = ['Alumno', 'Presente', 'Retraso', 'Ausencia', 'Justificada'];
+    const headerClasses = ['alumno-title', 'presente', 'retraso', 'ausencia', 'justificada'];
+
+    headerTexts.forEach((title, index) => {
+        const headerCol = document.createElement("th");
+        headerCol.textContent = title;
+        headerCol.style.width = "100px";
+        headerCol.classList.add(headerClasses[index]);
+        headerRow.appendChild(headerCol);
+    });
+
+    header.appendChild(headerRow);
+    table.appendChild(header);
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     profileDropdownBtn.addEventListener("click", () => {
         contentDropdown.style.display = 
@@ -115,6 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
                 asistenciaDiv.innerHTML = ""; // Netejar la taula abans d'afegir res
                 table.innerHTML = "";
+                addHeaders();
                 
                 // Iterar sobre els alumnes i afegir-los al DOM
                 data.forEach(asistencia => {
@@ -144,8 +163,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     });
                     
                     table.appendChild(row);
-                    asistenciaDiv.appendChild(table);
                 });
+                asistenciaDiv.appendChild(table);
             })
             .catch(error => {
                 console.error("Error capturat:", error);
@@ -167,6 +186,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
                 asistenciaDiv.innerHTML = ""; // Netejar la taula abans d'afegir res
                 table.innerHTML = "";
+                addHeaders();
                 
                 // Iterar sobre els alumnes i afegir-los al DOM
                 data.forEach(asistencia => {
@@ -196,8 +216,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     });
                     
                     table.appendChild(row);
-                    asistenciaDiv.appendChild(table);
                 });
+                asistenciaDiv.appendChild(table);
             })
             .catch(error => {
                 console.error("Error capturat:", error);

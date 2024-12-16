@@ -206,27 +206,13 @@ body {
     line-height: 120%;
 }
 
-.filter-title, .asistencias-title {
+.filter-title {
     font-weight: bold;
     font-size: 14px;
     color: #143751;
     display: flex;
     min-height: 6vh;
     gap: 120px;
-}
-
-.asistencias-title {
-    align-items: center;
-    min-height: 0vh;
-    margin-top: 25px;
-    margin-bottom: 20px;
-    gap: 90px;
-}
-
-.asistencias-title div:not(:first-child) {
-    padding: 2px 25px;
-    color: #fff;
-    border-radius: 8px;
 }
 
 .presente {background-color: #34C759;}
@@ -273,9 +259,31 @@ hr {
     border: none;
 }
 
+.asistencias table th {
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+    color: #143751;
+    gap: 90px;
+    height: 30px;
+}
+
+.asistencias table th:not(:first-child) {
+    text-align: center;
+    vertical-align: middle;
+    padding: 2px 25px;
+    color: #fff;
+    border-radius: 8px;
+}
+
 .asistencias table td {
     padding: 8px 0px;
     width: 10%;
+}
+
+.asistencias table td:not(:first-child) {
+    text-align: center;
+    vertical-align: middle;
 }
 
 .asistencias table tr {

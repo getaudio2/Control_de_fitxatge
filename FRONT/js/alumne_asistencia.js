@@ -30,6 +30,26 @@ function formatDate(date) {
     return date;
 }
 
+function addHeaders() {
+    const header = document.createElement("thead");
+    const headerRow = document.createElement("tr");
+    const headerCol1 = document.createElement("th");
+    const headerCol2 = document.createElement("th");
+    const headerCol3 = document.createElement("th");
+    headerCol1.textContent = "Asignatura";
+    headerCol2.textContent = "Fecha y hora";
+    headerCol3.textContent = "Estado";
+    headerCol1.style.width = "100px";
+    headerCol2.style.width = "100px";
+    headerCol3.style.width = "100px";
+    headerRow.appendChild(headerCol1);
+    headerRow.appendChild(headerCol2);
+    headerRow.appendChild(headerCol3);
+
+    header.appendChild(headerRow);
+    table.appendChild(header);
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     profileDropdownBtn.addEventListener("click", () => {
         contentDropdown.style.display = 
@@ -73,8 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(data => {
             asistenciaDiv.innerHTML = ""; // Netejar la taula abans d'afegir res
-
-            console.log(data);
+            addHeaders();
             
             // Iterar sobre els alumnes i afegir-los al DOM
             data.forEach(asistencia => {
@@ -93,8 +112,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 row.appendChild(estat);
                 
                 table.appendChild(row);
-                asistenciaDiv.appendChild(table);
             });
+            asistenciaDiv.appendChild(table);
         })
         .catch(error => {
             console.error("Error capturat:", error);
@@ -124,6 +143,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
                 asistenciaDiv.innerHTML = ""; // Netejar la taula abans d'afegir res
                 table.innerHTML = "";
+                addHeaders();
                 
                 // Iterar sobre els alumnes i afegir-los al DOM
                 data.forEach(asistencia => {
@@ -142,8 +162,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     row.appendChild(estat);
                     
                     table.appendChild(row);
-                    asistenciaDiv.appendChild(table);
                 });
+                asistenciaDiv.appendChild(table);
             })
             .catch(error => {
                 console.error("Error capturat:", error);
@@ -162,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
                 asistenciaDiv.innerHTML = ""; // Netejar la taula abans d'afegir res
                 table.innerHTML = "";
+                addHeaders();
                 
                 // Iterar sobre els alumnes i afegir-los al DOM
                 data.forEach(asistencia => {
@@ -180,8 +201,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     row.appendChild(estat);
                     
                     table.appendChild(row);
-                    asistenciaDiv.appendChild(table);
                 });
+                asistenciaDiv.appendChild(table);
             })
             .catch(error => {
                 console.error("Error capturat:", error);
@@ -207,6 +228,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
                 asistenciaDiv.innerHTML = ""; // Netejar la taula abans d'afegir res
                 table.innerHTML = "";
+                addHeaders();
                 
                 // Iterar sobre els alumnes i afegir-los al DOM
                 data.forEach(asistencia => {
@@ -225,8 +247,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     row.appendChild(estat);
                     
                     table.appendChild(row);
-                    asistenciaDiv.appendChild(table);
                 });
+                asistenciaDiv.appendChild(table);
             })
             .catch(error => {
                 console.error("Error capturat:", error);
@@ -245,6 +267,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             asistenciaDiv.innerHTML = ""; // Netejar la taula abans d'afegir res
             table.innerHTML = "";
+            addHeaders();
             
             // Iterar sobre els alumnes i afegir-los al DOM
             data.forEach(asistencia => {
@@ -263,8 +286,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 row.appendChild(estat);
                 
                 table.appendChild(row);
-                asistenciaDiv.appendChild(table);
             });
+            asistenciaDiv.appendChild(table);
         })
         .catch(error => {
             console.error("Error capturat:", error);

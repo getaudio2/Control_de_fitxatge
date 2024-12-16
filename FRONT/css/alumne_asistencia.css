@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-
-body, html {
-    overflow: hidden;
-    position: absolute;
-}
 body {
     margin: 0;
     padding: 0;
@@ -126,9 +121,9 @@ body {
 }
 
 .main-area {
-    min-height: 585px;
     display: flex;
     margin-top: 62px;
+    min-height: 585px;
 }
 
 .sidebar {
@@ -155,6 +150,8 @@ body {
     padding: 5px 30px;
     overflow: visible;
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar .item {
@@ -214,6 +211,11 @@ body {
     display: flex;
     min-height: 6vh;
     gap: 160px;
+}
+
+.asistencias-title {
+    width: 50vw;
+    gap: 295px;
 }
 
 .filter-drop {

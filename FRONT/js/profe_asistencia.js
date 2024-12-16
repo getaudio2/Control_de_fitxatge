@@ -81,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .catch(error => {
             console.error("Error capturat:", error);
-            alert("Error al carregar la llista de mòduls");
         });
     // Càrrega de mòduls
     fetch("http://localhost:8000/clase/modulo/listAll")
@@ -101,7 +100,6 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .catch(error => {
             console.error("Error capturat:", error);
-            alert("Error al carregar la llista de mòduls");
         });
 
     // Càrrega d'alumnes segons GRUP per default ("DAW2A" serà default)
@@ -151,7 +149,6 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .catch(error => {
                 console.error("Error capturat:", error);
-                alert("Error al carregar la llista d'alumnes");
             });
 
     // Càrrega d'alumnes segons el GRUP
@@ -204,7 +201,6 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .catch(error => {
                 console.error("Error capturat:", error);
-                alert("Error al carregar la llista d'alumnes");
             });
         }
     });

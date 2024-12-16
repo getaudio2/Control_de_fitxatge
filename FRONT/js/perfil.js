@@ -68,6 +68,5 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     .catch(error => {
         console.error("Error capturat:", error);
-        alert("Error al carregar les dades de la persona");
     });
 });

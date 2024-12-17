@@ -13,6 +13,24 @@ form.addEventListener("submit", async (e) => {
         window.location.assign("alumne_asistencia.html", "_self");
     } else {
         console.log("user not existing")
-        loginErrorMsg.style.opacity = 1;
+        showError();
     }
 })
+
+function showError() {
+    loginErrorMsg.classList.remove("hidden");
+    setTimeout(() => {
+        loginErrorMsg.classList.add("visible");
+    }, 10);
+
+    setTimeout(() => {
+        hideError();
+    }, 4000);
+}
+
+function hideError() {
+    loginErrorMsg.classList.remove('visible');
+    setTimeout(() => {
+        loginErrorMsg.classList.add("hidden");
+    }, 500);
+}

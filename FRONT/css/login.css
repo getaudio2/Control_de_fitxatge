@@ -13,7 +13,6 @@ body {
 }
 
 .section__image {
-
     background-size: 50% 50%;
     background-position: 50%;
     height: 100vh;
@@ -23,8 +22,8 @@ body {
 .section__image img {
     width: 100%;
     height: 100%;
-    filter: grayscale(100%);
-    /*filter:hue-rotate(215deg);*/
+    filter: grayscale(1) sepia(1) hue-rotate(190deg) saturate(2);
+    opacity: 0.85;
 }
 
 .section__login {
@@ -95,14 +94,23 @@ a:link, a:visited {
     color: #31A9CF;
 }
 
-.error-div {
-    z-index: 20;
-    top: 80%;
-    left: 80%;
+.error {
     position: fixed;
-    border: 3px solid #fa6e6e;
-    border-radius: 20px;
-    background-color: #fea9a9;
+    bottom: 20px;
+    right: -30%;
+    background-color: rgba(254, 169, 169, 1);
+    border: 1px solid #fa6e6e;
+    border-radius: 10px;
+    padding: 10px;
     padding-right: 50px;
-    opacity: 0;
+    z-index: 100;
+    transition: transform 0.5s ease-in-out;
+}
+
+.error.visible {
+    transform: translateX(-90%);
+}
+
+.hidden {
+    display: none;
 }

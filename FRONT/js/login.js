@@ -19,10 +19,24 @@ form.addEventListener("submit", async (e) => {
         })
     });
 
-    const data = await response.json();
-
     if (response.ok) {
-        window.location.assign("alumne_asistencia.html", "_self");
+        localStorage.setItem('username', email);
+
+        fetch('http://localhost:8000/user/?' + new URLSearchParams({
+            username: email,
+        }).toString())
+        .then(response => response.json())
+        .then(user => {
+            console.log(user);
+            if (user.Rol === "Profesor") {
+                window.location.assign("profe_asistencia.html", "_self");
+            } else if (user.Rol === "Alumno") {
+                window.location.assign("alumne_asistencia.html", "_self");
+            }
+        })
+        .catch(error => {
+            console.error("Error capturat:", error);
+        });
     } else {
         console.log("user not existing")
         showError();

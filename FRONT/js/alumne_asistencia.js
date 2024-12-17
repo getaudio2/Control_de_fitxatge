@@ -295,4 +295,17 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         }
     });
+
+    const username = localStorage.getItem('username');
+
+    fetch('http://localhost:8000/user/?' + new URLSearchParams({
+        username: username,
+    }).toString())
+    .then(response => response.json())
+    .then(user => {
+        document.querySelector('.name-user').textContent = user.Name + " " + user.Surname;
+    })
+    .catch(error => {
+        console.error("Error capturat:", error);
+    });
 });

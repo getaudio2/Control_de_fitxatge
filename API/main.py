@@ -187,6 +187,17 @@ def login(request: LoginRequest):
     conn.close()    
     return {"Message": "Login correcto"}
 
+# Endpoint para recuperar la info de un usuario según su email
+@app.get("/user/")
+def get_user_data(username: str):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    query = "SELECT Name, Surname, Rol FROM persona WHERE Email = %s;"
+    cursor.execute(query, (username,))
+    user = cursor.fetchone()
+    conn.close()
+    return user
+
 # Endpoint para guardar la asistencia de un grupo de alumnos
 # a la tabla asistencia de la database
 @app.post("/guardar-asistencia-alumnos")

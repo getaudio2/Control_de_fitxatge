@@ -1,7 +1,6 @@
 const openSidebarBtn = document.querySelector(".fa-bars");
 const profileDropdownBtn = document.querySelector(".dropbtn");
 const contentDropdown = document.querySelector(".dropdown-content");
-const profileName = document.querySelector(".name-user");
 const iconUser = document.getElementById("icon-user");
 const asistenciaLink = document.getElementById("asistencia-link");
 const nameInput = document.querySelector(".name-input");
@@ -37,33 +36,44 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    const fullNameArray = profileName.innerText.split(" ");
+    const username = localStorage.getItem('username');
 
-    // Fetch para recibir los datos del perfil de una persona según su nombre
-    fetch("http://localhost:8000/persona/?" + new URLSearchParams({
-        name: fullNameArray[0],
-        surname: fullNameArray[1],
+    fetch('http://localhost:8000/user/?' + new URLSearchParams({
+        username: username,
     }).toString())
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("Error a la resposta del servidor");
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (data.Rol === "Profesor"){
-            iconUser.classList.toggle("fa-user");
-            iconUser.classList.toggle("fa-chalkboard-user");
-            asistenciaLink.href = "./profe_asistencia.html";
-        } else if (data.Rol === "Alumno") {
-            asistenciaLink.href = "./alumne_asistencia.html";
-        }
+    .then(response => response.json())
+    .then(user => {
+        document.querySelector('.name-user').textContent = user.Name + " " + user.Surname;
 
-        nameInput.value = data.Name;
-        surnameInput.value = data.Surname;
-        emailInput.value = data.Email;
-        deptInput.value = data.Rol;
-        profileId.textContent = "00" + data.Id;
+        // Fetch para recibir los datos del perfil de una persona según su nombre
+        fetch("http://localhost:8000/persona/?" + new URLSearchParams({
+            name: user.Name,
+            surname: user.Surname,
+        }).toString())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error a la resposta del servidor");
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.Rol === "Profesor"){
+                iconUser.classList.toggle("fa-user");
+                iconUser.classList.toggle("fa-chalkboard-user");
+                asistenciaLink.href = "./profe_asistencia.html";
+            } else if (data.Rol === "Alumno") {
+                asistenciaLink.href = "./alumne_asistencia.html";
+            }
+
+            nameInput.value = data.Name;
+            surnameInput.value = data.Surname;
+            emailInput.value = data.Email;
+            deptInput.value = data.Rol;
+            profileId.textContent = "00" + data.Id;
+        })
+        .catch(error => {
+            console.error("Error capturat:", error);
+        });
     })
     .catch(error => {
         console.error("Error capturat:", error);

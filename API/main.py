@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 import mysql.connector
 from client import get_db_connection
 from persona import Persona
@@ -18,6 +19,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+class LoginRequest(BaseModel):
+    username: str
+    password: str
 
 def persona_schema(fetchPersona):
     return {
@@ -165,6 +170,22 @@ def list_grupos(nombreGrupo: str):
     alumnos = cursor.fetchall()
     conn.close()    
     return alumnos
+
+# Endpoint para comprovar si el usuario existe en la database
+@app.post("/login")
+def login(request: LoginRequest):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    query = "SELECT * FROM persona WHERE Email = %s;"
+    cursor.execute(query, (request.username,))
+    user = cursor.fetchone()
+
+    if user is None or user['PASSWORD'] != request.password:
+        conn.close()
+        raise HTTPException(status_code=401, detail="Usuario o contraseña incorrectos")
+
+    conn.close()    
+    return {"Message": "Login correcto"}
 
 # Endpoint para guardar la asistencia de un grupo de alumnos
 # a la tabla asistencia de la database
